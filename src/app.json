@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#db3e00",
+    "navigationBarTitleText": "随手记账",
+    "navigationBarTextStyle": "white"
+  }
+}
