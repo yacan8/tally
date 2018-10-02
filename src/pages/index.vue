@@ -1,22 +1,30 @@
 <template>
-<div>
+<div class="main">
+  <stats v-if="menuKey === 'stats'"></stats>
+  <tally v-if="menuKey === 'tally'"></tally>
+  <user v-if="menuKey === 'user'"></user>
   <navbar></navbar>
 </div>
 </template>
 
 <script>
-import navbar from '@/components/navbar'
+import navbar from '@/components/navbar';
+import tally from './tally/index';
+import stats from './stats/index';
+import user from './user/index';
 
 export default {
   data() {
     return {
-      motto: 'Hello World',
       userInfo: {}
     }
   },
 
   components: {
-    navbar
+    navbar,
+    tally,
+    stats,
+    user
   },
 
   methods: {
@@ -46,6 +54,11 @@ export default {
   created() {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
+  },
+  computed: {
+    menuKey: function() {
+      return this.$store.state.menuKey;
+    }
   }
 }
 </script>
