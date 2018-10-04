@@ -7,7 +7,8 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    menuKey: 'tally'
+    menuKey: 'tally',
+    
   },
   mutations: {
     setMenuKey: (state, key) => {
@@ -15,6 +16,9 @@ const store = new Vuex.Store({
         state.menuKey = key;
       }
     }
+  },
+  modules: {
+    
   }
 })
 

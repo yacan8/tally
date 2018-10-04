@@ -4,11 +4,40 @@
     <div class="tally">
       <div class="tally-main">
         <div class="tally-main-content">
-          <picker mode="date" :value="date" start="2015-09-01" end="2017-09-01" @change="bindDateChange($event)">
-            <view class="picker">
-              当前选择: {{date}}
-            </view>
-          </picker>
+          <div class="this-month-cost">
+            <div class="font-30">20.00 元</div>
+            <div class="font-12 mt10">9月份支出</div>
+          </div>
+
+          <div class="mt20">
+            <div class="font-12 mt10">9月收入： 231.99 元</div>
+            <div class="font-12 mt10">8月总计： -2131.99 元</div>
+          </div>
+        </div>
+      </div>
+      <div class="tally-list">
+        <div class="tally-item">
+          <div class="tally-item-icon">
+            <i class="iconfont icon-tally"></i>
+          </div>
+          <div class="tally-item-desc">
+            吃饭
+          </div>
+          <div class="tally-item-cost">
+            12
+          </div>
+        </div>
+
+        <div class="tally-item">
+          <div class="tally-item-icon">
+            <i class="iconfont icon-tally"></i>
+          </div>
+          <div class="tally-item-desc">
+            吃饭
+          </div>
+          <div class="tally-item-cost">
+            12
+          </div>
         </div>
       </div>
     </div>
@@ -16,7 +45,6 @@
 </template>
 <script>
 import topTg from '@/components/top-bg';
-import navbar from '@/components/navbar';
 
 export default {
   data() {
@@ -26,28 +54,60 @@ export default {
   },
   components: {
     'top-bg': topTg,
-    navbar
   },
   methods: {
-    bindDateChange(e) {
-      console.log(e);
-      this.date = e.mp.detail.value;
-    }
+    
   }
 }
 </script>
 <style lang="less">
+@import '../../style/mixinx.less';
+
 .tally {
   &-main {
     padding: 15px;
 
     &-content {
+      .box-shadow();
       background-color: #fff;
-      min-height: 200px;
       border-radius: 7px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-      padding: 10px;
+      padding: 30px 25px;
+    }
+  }
+
+  &-list {
+    padding: 0 15px;
+  }
+  
+  &-item {
+    .box-shadow();
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: space-between;
+    line-height: 60px;
+    height: 60px;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    
+
+    &-icon {
+      width: 60px;
+      height: 60px;
+      text-align: center;
+    }
+    &-desc {
+      width: ~'calc(100% - 30px - 60px)';
+      padding: 0 5px;
+    }
+    &-cost {
+      width: 60px;
+      height: 60px;
+      text-align: right;
+      padding-right: 10px;
     }
   }
 }
+
+
 </style>
