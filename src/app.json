@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/main"
+    "pages/main",
+    "pages/addTallyEntry/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

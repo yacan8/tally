@@ -8,10 +8,15 @@
       <span class="nav-item-text">统计</span>
     </a>
     <a @click="setMenuKey('tally')" :class="['nav-item', {'active': menuKey === 'tally'}]">
-      <span class="nav-item-icon">
-        <ticon type="tally"></ticon>
+      <span v-if="menuKey === 'tally'" class="add-tally" @click="linkToAddTally($event)">
+        <ticon type="plus-square"></ticon>
       </span>
-      <span class="nav-item-text">记账</span>
+      <span v-if="menuKey !== 'tally'">
+        <span class="nav-item-icon">
+          <ticon type="tally"></ticon>
+        </span>
+        <span class="nav-item-text">记账</span>
+      </span>
     </a>
 
     <a @click="setMenuKey('user')" :class="['nav-item', {'active': menuKey === 'user'}]">
@@ -39,6 +44,9 @@ export default {
   methods: {
     setMenuKey(key) {
       this.$store.commit('setMenuKey', key);
+    },
+    linkToAddTally($event) {
+      wx.navigateTo({url: './addTallyEntry/main'})
     }
   },
   computed: {
@@ -50,13 +58,22 @@ export default {
 </script>
 
 <style lang="less">
+
+@border-width: 1px;
+@border-style: solid;
+@border-color: #f1f1f1;
+
+.border-top {
+  border-top: @border-width @border-style @border-color;
+}
+
 .nav-wraper {
+  .border-top();
   position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
   z-index: 10;
-  border-top: 1px solid #f1f1f1;
   padding: 5px 0;
   .nav {
     display: flex;
@@ -65,6 +82,15 @@ export default {
       display: block;
       text-align: center;
       color: #666;
+      .add-tally {
+        position: relative;
+        background: #fff;
+        // .border-top();
+        font-size: 36px;
+        // margin-top: -20px;
+        display: inline-block;
+        // padding: 0 5px 0 5px;
+      }
       &-icon {
         display: block;
         height: 46rpx;

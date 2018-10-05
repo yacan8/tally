@@ -16,6 +16,9 @@
         </div>
       </div>
       <div class="tally-list">
+        <div class="tally-list-title">
+          <span>9月份</span>
+        </div>
         <div class="tally-item">
           <div class="tally-item-icon">
             <i class="iconfont icon-tally"></i>
@@ -77,6 +80,14 @@ export default {
 
   &-list {
     padding: 0 15px;
+
+    &-title {
+      font-size:12px;
+      margin-bottom:10px;
+      padding-left:10px;
+      color: #666;
+
+    }
   }
   
   &-item {
