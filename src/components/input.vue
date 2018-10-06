@@ -1,8 +1,8 @@
 <template>
 <view class="input-wraper">
   <view class="input-desc">
-    <text class="label">备注：</text>
-    <input class="desc"/>
+    <text class="label">备注:</text>
+    <input class="desc" v-model="desc"/>
     <text class="money">{{money}}</text>
   </view>
   <view class="number-input">
@@ -54,7 +54,7 @@
         </view>
       </picker>
     </view>
-    <view class="affirm" rowspan="3" hover-class="affirm-hover" hover-stay-time="50">
+    <view class="affirm" rowspan="3" hover-class="affirm-hover" hover-stay-time="50" @click="getAffirmData">
       <span>确认</span>
     </view>
   </view>
@@ -68,8 +68,10 @@ import moment from 'moment';
 const dateFormat = 'YYYY-MM-DD';
 
 export default {
+  props: ['onOk'],
   data() {
     return {
+      desc: '',
       endDate: moment().format(dateFormat),
       date: moment().format(dateFormat),
       money: '0',
@@ -112,6 +114,20 @@ export default {
       }
 
       this.money = money;
+    },
+    getAffirmData() {
+      const data = {
+        desc: this.desc,
+        date: this.date,
+        money: this.money
+      }
+      this.onOk(data);
+    },
+    setData(data) {
+      const { desc, date, money } = this;
+      this.desc = desc;
+      this.date = date;
+      this.money = money;
     }
   },
   computed: {
@@ -127,7 +143,7 @@ export default {
 
 @td-height: 50px;
 @desc-height: @td-height;
-@desc-label-width: 116rpx;
+@desc-label-width: 90rpx;
 @money-text-width: 200rpx;
 
 .border-style {

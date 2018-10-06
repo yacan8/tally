@@ -24,7 +24,7 @@
     </view>
   </view>
 
-  <tally-input></tally-input>
+  <tally-input ref="inputComponent" :onOk="onOk"></tally-input>
   
 </view>
 </template>
@@ -35,6 +35,7 @@ import ticon from '@/components/ticon.vue';
 import { expenditureTypes, incomeTypes } from '@/store/contants.js';
 
 export default {
+
   data() {
     return {
       tallyType: 'expenditure',
@@ -63,6 +64,10 @@ export default {
       if (this.selectType !== selectType) {
         this.selectType = selectType;
       }
+    },
+    onOk(data) {
+      console.log(this.addTally);
+      console.log('onOk', data);
     }
   },
   computed: {

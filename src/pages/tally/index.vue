@@ -50,6 +50,9 @@
 import topTg from '@/components/top-bg';
 
 export default {
+  created() {
+    this.getData();
+  },
   data() {
     return {
       date: '2016-09-01',
@@ -59,7 +62,10 @@ export default {
     'top-bg': topTg,
   },
   methods: {
-    
+    getData() {
+      console.log(this);
+      this.$store.dispatch('tallyStore/getDataList');
+    }
   }
 }
 </script>
