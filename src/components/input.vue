@@ -124,10 +124,13 @@ export default {
       this.onOk(data);
     },
     setData(data) {
-      const { desc, date, money } = this;
+      const { desc, date, money } = data;
       this.desc = desc;
       this.date = date;
       this.money = money;
+    },
+    reset() {
+      this.setData({ desc: '', date: moment().format(dateFormat), money: '0' })
     }
   },
   computed: {

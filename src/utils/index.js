@@ -1,6 +1,5 @@
+import uuidv1 from 'uuid/v1';
 
-function message(options) {
-  wx.showToast({
-    options
-  })
+export function generatorUuid() {
+  return uuidv1();;
 }

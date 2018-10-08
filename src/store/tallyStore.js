@@ -16,8 +16,9 @@ const tallyStore = {
       context.commit('setLoading', true);
       wx.getStorage({
         key: DATA_KEY,
-        success: (dataList) => {
-          context.commit('setDataList', dataList || []);
+        success: (res) => {
+          console.log(res);
+          context.commit('setDataList', res.data || []);
         },
         fail: (e) => {
           if (e.errMsg === 'getStorage:fail data not found') {
@@ -32,22 +33,28 @@ const tallyStore = {
         }
       })
     },
-    addTally(context, data) {
+    addTally(context, _data) {
       context.commit('setLoading', true);
-      const { dataList } = state;
-      dataList.unshift(data);
-      wx.setStorage({
-        key: DATA_KEY,
-        success: (dataList) => {
-          context.commit('setDataList', dataList.slice(0) || []);
-        },
-        fail: (e) => {
-          console.error(e);
-          message.info('添加数据失败');
-        },
-        complete: () => {
-          context.commit('setLoading', false);
-        }
+      const { dataList } = context.state;
+      dataList.unshift(_data);
+      const data = JSON.parse(JSON.stringify(dataList));
+      return new Promise((resolve, reject) => {
+        wx.setStorage({
+          key: DATA_KEY,
+          data,
+          success: (res) => {
+            console.log(res);
+            context.commit('setDataList', data || []);
+          },
+          fail: (e) => {
+            console.error(e);
+            message.info('添加数据失败');
+          },
+          complete: () => {
+            context.commit('setLoading', false);
+            resolve();
+          }
+        })
       })
     }
   },

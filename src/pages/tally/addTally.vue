@@ -33,13 +33,13 @@
 import tallyInput from '@/components/input.vue';
 import ticon from '@/components/ticon.vue';
 import { expenditureTypes, incomeTypes } from '@/store/contants.js';
+import { generatorUuid } from '@/utils/index';
 
 export default {
 
   data() {
     return {
       tallyType: 'expenditure',
-      selectTypesWidth: 0,
       selectType: 'eat'
     }
   },
@@ -66,8 +66,22 @@ export default {
       }
     },
     onOk(data) {
-      console.log(this.addTally);
       console.log('onOk', data);
+      this.$store.dispatch('tallyStore/addTally', {
+        uuid: generatorUuid(),
+        tallyType: this.tallyType,
+        type: this.type,
+        ...data
+      }).then(() => {
+        wx.reLaunch({url: '../main', complete: () => {
+          this.reset();
+        }});
+      })
+    },
+    reset() {
+      this.tallyType = 'expenditure';
+      this.selectType = 'eat';
+      this.$refs.inputComponent.reset();
     }
   },
   computed: {
