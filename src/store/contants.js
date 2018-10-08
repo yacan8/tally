@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export const expenditureTypes = {
   'eat': {
     icon: 'eat',
@@ -67,3 +69,8 @@ export const incomeTypes = {
     text: '其他'
   },
 }
+
+export const allTypes = _.merge(incomeTypes, expenditureTypes);
+
+
+export const weeksMap = ['日', '一', '二', '三', '四', '五', '六']

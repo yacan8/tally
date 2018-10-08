@@ -49,11 +49,6 @@ export default {
     ticon
   },
   methods: {
-    setType(type) {
-      if (this.type !== type) {
-        this.type = type;
-      }
-    },
     setTallyType(tallyType) {
       if (this.tallyType !== tallyType) {
         this.tallyType = tallyType;
@@ -70,7 +65,7 @@ export default {
       this.$store.dispatch('tallyStore/addTally', {
         uuid: generatorUuid(),
         tallyType: this.tallyType,
-        type: this.type,
+        type: this.selectType,
         ...data
       }).then(() => {
         wx.reLaunch({url: '../main', complete: () => {

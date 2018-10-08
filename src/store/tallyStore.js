@@ -5,6 +5,7 @@ const DATA_KEY = 'tallyList';
 const tallyStore = {
   namespaced: true,
   state: {
+    tallyType: '',
     loading: false,
     currentPage: 1,
     pageSize: 10,
@@ -74,7 +75,12 @@ const tallyStore = {
     }
   },
   getters: {
-
+    list: state => {
+      if (state.tallyType) {
+        return state.dataList.filter(item => item.tallyType === state.tallyType)
+      }
+      return state.dataList
+    }
   }
 }
 export default tallyStore;

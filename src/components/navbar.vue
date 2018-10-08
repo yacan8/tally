@@ -69,6 +69,7 @@ export default {
 
 .nav-wraper {
   .border-top();
+  background: #fff;
   position: fixed;
   width: 100%;
   bottom: 0;
