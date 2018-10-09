@@ -65,7 +65,7 @@
 <script>
 import moment from 'moment';
 
-const dateFormat = 'YYYY-MM-DD';
+import { dateFormat } from '@/store/contants';
 
 export default {
   props: ['onOk'],

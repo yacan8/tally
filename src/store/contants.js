@@ -1,5 +1,11 @@
 import _ from 'lodash';
 
+
+export const dateFormat = "YYYY-MM-DD";
+export const monthFormat = "YYYY-MM";
+export const yearFormat = "YYYY";
+export const DATA_KEY = 'tallyList';
+
 export const expenditureTypes = {
   'eat': {
     icon: 'eat',

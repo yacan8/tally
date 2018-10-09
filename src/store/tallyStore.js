@@ -1,6 +1,7 @@
 import message from '@/utils/message';
-
-const DATA_KEY = 'tallyList';
+import _ from 'lodash';
+import moment from 'moment';
+import { dateFormat, monthFormat, DATA_KEY } from './contants';
 
 const tallyStore = {
   namespaced: true,
@@ -80,6 +81,34 @@ const tallyStore = {
         return state.dataList.filter(item => item.tallyType === state.tallyType)
       }
       return state.dataList
+    },
+    monthStat: state => (month, tallyType) => {
+      month = month || moment().format(monthFormat);
+      const monthTallyList = state.dataList.filter(item => {
+        const monthHit = moment(item.date, dateFormat).format(monthFormat) === month;
+        let tallyTypeHit = true;
+        if (tallyType) {
+          tallyTypeHit = item.tallyType === tallyType;
+        }
+        return monthHit && tallyTypeHit;
+      });
+      return _.sumBy(monthTallyList, o => {
+        return Number(o.money);
+      })
+    },
+    dayStat: state => (day, tallyType) => {
+      day = day || moment().format(dateFormat);
+      const dayTallyList = state.dataList.filter(item => {
+        const dayHit = item.date === day;
+        let tallyTypeHit = true;
+        if (tallyType) {
+          tallyTypeHit = item.tallyType === tallyType;
+        }
+        return dayHit && tallyTypeHit;
+      })
+      return _.sumBy(dayTallyList, o => {
+        return Number(o.money);
+      })
     }
   }
 }

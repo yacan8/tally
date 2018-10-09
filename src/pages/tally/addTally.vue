@@ -61,12 +61,12 @@ export default {
       }
     },
     onOk(data) {
-      console.log('onOk', data);
       this.$store.dispatch('tallyStore/addTally', {
         uuid: generatorUuid(),
         tallyType: this.tallyType,
         type: this.selectType,
-        ...data
+        ...data,
+        money: this.tallyType === 'expenditure' ? -Number(data.money) : Number(data.money)
       }).then(() => {
         wx.reLaunch({url: '../main', complete: () => {
           this.reset();
