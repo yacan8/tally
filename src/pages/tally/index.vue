@@ -1,8 +1,8 @@
 <template>
   <div>
     <top-bg></top-bg>
+    <portal-content></portal-content>
     <div class="tally">
-      <portal-content></portal-content>
       <tally-list></tally-list>
     </div>
   </div>

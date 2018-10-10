@@ -67,8 +67,10 @@ export default {
 @import '../../style/mixinx.less';
 
 .tally {
+  z-index: -1;
   &-list {
     padding: 0 15px;
+    padding-top: 200px;
 
     &-title {
       font-size:10px;

@@ -17,7 +17,7 @@ export default {
   width: 100%;
   margin:auto;
   overflow:hidden;
-  z-index: -1;
+  z-index: 0;
 }
 
 

@@ -3,17 +3,17 @@
     <view class="tally-main-content">
       <view class="d-flex">
         <view class="this-month-expenditure">
-          <view class="font-30">{{thisMonthExpenditure}} 元</view>
+          <view class="font-30">{{thisMonthExpenditure}}</view>
           <view class="font-12 mt10">9月份支出</view>
         </view>
         <view class="yesterday-expenditure">
-          <view class="font-30">{{yesterdayExpenditure}} 元</view>
+          <view class="font-30">{{yesterdayExpenditure}}</view>
           <view class="font-12 mt10">昨日支出</view>
         </view>
       </view>
       <view class="mt20">
-        <view class="font-12 mt10">9月收入： {{thisMonthIncome}} 元</view>
-        <view class="font-12 mt10">上月总计： {{lastMount}} 元</view>
+        <view class="font-12 mt10">9月收入： {{thisMonthIncome}}</view>
+        <view class="font-12 mt10">上月总计： {{lastMount}}</view>
       </view>
     </view>
   </view>
@@ -51,6 +51,10 @@ export default {
 
 .tally-main {
   padding: 15px;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 2;
 
   &-content {
     .box-shadow();
