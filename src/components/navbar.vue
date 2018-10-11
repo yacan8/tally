@@ -1,12 +1,6 @@
 <template>
 <div class="nav-wraper">
   <div class="nav">
-    <a @click="setMenuKey('stats')" :class="['nav-item', {'active': menuKey === 'stats'}]">
-      <span class="nav-item-icon">
-        <ticon type="stats"></ticon>
-      </span>
-      <span class="nav-item-text">统计</span>
-    </a>
     <a @click="setMenuKey('tally')" :class="['nav-item', {'active': menuKey === 'tally'}]">
       <span v-if="menuKey === 'tally'" class="add-tally" @click="linkToAddTally($event)">
         <ticon type="plus-square"></ticon>
@@ -18,13 +12,21 @@
         <span class="nav-item-text">记账</span>
       </span>
     </a>
+    
+    <a @click="setMenuKey('stats')" :class="['nav-item', {'active': menuKey === 'stats'}]">
+      <span class="nav-item-icon">
+        <ticon type="stats"></ticon>
+      </span>
+      <span class="nav-item-text">统计</span>
+    </a>
+    
 
-    <a @click="setMenuKey('user')" :class="['nav-item', {'active': menuKey === 'user'}]">
+    <!-- <a @click="setMenuKey('user')" :class="['nav-item', {'active': menuKey === 'user'}]">
       <span class="nav-item-icon">
         <ticon type="user"></ticon>
       </span>
       <span class="nav-item-text">我</span>
-    </a>
+    </a> -->
   </div>
 </div>
 </template>
@@ -79,7 +81,8 @@ export default {
   .nav {
     display: flex;
     &-item {
-      width: 33.3333%;
+      // width: 33.3333%;
+      width: 50%;
       display: block;
       text-align: center;
       color: #666;

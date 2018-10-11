@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <picker mode="date" :value="date" start="2015-09-01" end="2017-09-01" @change="bindDateChange($event)">
-      <view class="picker">
-        当前选择: {{date}}
-      </view>
-    </picker>
-  </div>
+<view>
+<view>
+  <img src="/static/images/comingSoon.svg" style="width: 30vw; height: 30vw; margin: 100px 0 30px 35vw;opacity:0.5;">
+</view>
+<view style="text-align: center;">
+  <text>敬请期待</text>
+</view>
+</view>
 </template>
 <script>
 import topTg from '@/components/top-bg';
